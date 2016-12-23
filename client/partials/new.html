@@ -1,0 +1,20 @@
+<div ng-controller='sessionController'>
+  <div ng-controller='entryController'>
+    <a href="#/dashboard">Back</a>
+    <a href="#" ng-click='logout()'>Logout</a>
+    <h2>New Appointment</h2>
+    <br>
+    <label>Date: <input type="date" name="" value="" ng-model='newEntry.date' min='minDate'></label>
+    <label>Time: </label><select ng-model='newEntry.time' name="time">
+      <option ng-repeat="time in times" value={{time}} ng-bind="time"></option>
+    </select>
+    <br>
+    <br>
+    <label ng-style='{"vertical-align":"top"}'>Complaint: <textarea name="complaint" rows="8" cols="30" ng-model='newEntry.complaint'></textarea></label>
+    <br>
+    <br>
+    <button ng-click='cancelInput()'>Cancel</button>
+    <button ng-click='create()'>Add appointment</button>
+    <p ng-style='{"color":"red"}'>{{errMsg}}</p>
+  </div>
+</div>

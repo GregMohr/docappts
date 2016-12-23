@@ -1,0 +1,29 @@
+<div ng-controller='sessionController'>
+  <div ng-controller='entryController'>
+    <a href="#" ng-click='logout()'>Logout</a>
+    <h2>Doctor's Appointments</h2>
+    <br>
+    <label ng-style='{"color":"red"}'><input type="text" name="" value="" ng-model='search' placeholder='search'>  {{errMsg}}</label>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Patient</th>
+          <th>Complaint</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='entry in entries | orderBy: "date" | filter: search'>
+          <td>{{entry.date | amDateFormat:'MMMM Do YYYY'}}</td>
+          <td>{{entry.time}}</td>
+          <td>{{entry.name}}</td>
+          <td>{{entry.complaint}}</td>
+          <td ng-if='sessionUser._id == entry._patient'><button ng-click='cancel(entry)'>Cancel</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <a href="#/new"><button>Add appointment</button></a>
+  </div>
+</div>
